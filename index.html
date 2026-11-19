@@ -67,7 +67,7 @@ footer{text-align:center;padding:60px 5vw 50px;color:var(--muted)}
 <div class="type"><span id="t"></span><span class="cur"></span></div>
 <p style="max-width:560px;margin-top:14px;color:var(--muted)">B.Tech CSE student at JIIT Noida. I build AI-powered products end to end — from RAG pipelines to real-time multiplayer apps.</p>
 <div class="cta"><a class="btn p" href="#projects">View live projects</a><a class="btn" href="https://github.com/ayushmahtele" target="_blank" rel="noopener">GitHub</a><a class="btn" href="mailto:ayush011981@gmail.com">Email me</a></div>
-<div class="stats"><div><b data-n="150">0</b>LeetCode problems</div><div><b data-n="5">0</b>Featured projects</div><div><b>8.33</b>CGPA</div></div>
+<div class="stats"><div><b data-n="150">0</b>LeetCode problems</div><div><b id="pc" data-n="8">0</b>Projects built</div><div><b>8.33</b>CGPA</div></div>
 </section>
 
 <section id="projects">
@@ -99,7 +99,7 @@ var P=[
 {n:"Chess Throne",c:"Games",d:"Online chess with an in-browser alpha-beta AI engine, 3D boards, real-time Firestore multiplayer and Glicko-2 ratings.",t:["JavaScript","Firebase","Three.js"],live:"https://chessthrone.vercel.app",repo:"https://github.com/ayushmahtele/ChessThrone"},
 {n:"Def-Space Multi-Agent Dashboard",c:"AI",d:"FastAPI orchestrator running Vision, RAG, Weather, News, GIS and Predict agents concurrently, with SHAP-explained go/no-go predictions and PDF reports.",t:["FastAPI","React","TypeScript","ChromaDB"],live:"https://def-space-dashboard.vercel.app",repo:"https://github.com/ayushmahtele/Def-Space-Dashboard"},
 {n:"AI-Proctored Classroom",c:"Web",d:"Multi-college quiz platform with face and object detection proctoring, role-based access and a live Socket.IO monitor.",t:["Node.js","MongoDB","Socket.IO"],live:"https://classroom-bv1z.onrender.com",repo:"https://github.com/ayushmahtele/Classroom"},
-{n:"Traffic-Aware Pathfinding",c:"Algorithms",d:"Compare Dijkstra, A*, BFS and DFS on a city graph as animated traffic changes edge costs. C++17 solver behind a Node API.",t:["React","C++17","Node.js"],live:"",repo:""},
+{n:"Traffic-Aware Pathfinding",c:"Algorithms",d:"Compare Dijkstra, A*, BFS and DFS on a city graph as animated traffic changes edge costs. C++17 solver behind a Node API.",t:["React","C++17","Node.js"],live:"",repo:"https://github.com/ayushmahtele/Traffic-Aware-Pathfinding-Simulator"},
 {n:"Multiplayer Minesweeper",c:"Games",d:"Android real-time multiplayer with lobbies, a shared grid, penalty timer and an automatic leaderboard.",t:["Java","Firebase"],live:"",repo:"https://github.com/ayushmahtele/MinesweeperApp"},
 {n:"JARVIS",c:"AI",d:"Personal project — open the repository to see the code and README.",t:["GitHub"],live:"",repo:"https://github.com/ayushmahtele/JARVIS"}
 ];
@@ -125,6 +125,7 @@ document.getElementById("more").style.display="block"}).catch(function(){});
 // typing
 var W=["Full-Stack Developer","AI / RAG Engineer","Problem Solver"],wi=0,ci=0,del=false,t=document.getElementById("t");
 (function tick(){var w=W[wi];t.textContent=w.slice(0,ci);if(!del&&ci==w.length){del=true;return setTimeout(tick,1200)}if(del&&ci==0){del=false;wi=(wi+1)%W.length}ci+=del?-1:1;setTimeout(tick,del?40:80)})();
+document.getElementById("pc").dataset.n=P.length;
 // reveal + counters
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})});
 function obs(){[].forEach.call(document.querySelectorAll(".rv"),function(e){io.observe(e)})}obs();
