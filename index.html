@@ -76,6 +76,8 @@ footer{text-align:center;padding:60px 5vw 50px;color:var(--muted)}
 <div class="grid" id="g"></div>
 </section>
 
+<section id="more" style="display:none"><h2 class="rv in">More on <span>GitHub</span></h2><div class="grid" id="mg"></div></section>
+
 <section id="skills"><h2 class="rv">Skills</h2><div class="skills" id="sk"></div></section>
 
 <section id="experience"><h2 class="rv">Experience</h2>
@@ -92,22 +94,34 @@ footer{text-align:center;padding:60px 5vw 50px;color:var(--muted)}
 <script>
 // ✏️ EDIT HERE: paste each project’s real deployed URL in "live" and its repo in "repo".
 var P=[
+{n:"NetGuard",c:"Networking",d:"Network intrusion-detection and auto-blocking tool that watches traffic and blocks suspicious hosts automatically. Built as a Computer Networks & IoT course project.",t:["Node.js","Python","Network Security"],live:"",repo:"https://github.com/ayushmahtele/Netguard"},
+{n:"LANchat",c:"Networking",d:"Chat application for local networks, built with Python and Django.",t:["Python","Django","Networking"],live:"",repo:"https://github.com/ayushmahtele/LANchat"},
 {n:"Chess Throne",c:"Games",d:"Online chess with an in-browser alpha-beta AI engine, 3D boards, real-time Firestore multiplayer and Glicko-2 ratings.",t:["JavaScript","Firebase","Three.js"],live:"https://chessthrone.vercel.app",repo:"https://github.com/ayushmahtele/ChessThrone"},
-{n:"Def-Space Multi-Agent Dashboard",c:"AI",d:"FastAPI orchestrator running Vision, RAG, Weather, News, GIS and Predict agents concurrently, with SHAP-explained go/no-go predictions and PDF reports.",t:["FastAPI","React","TypeScript","ChromaDB"],live:"https://def-space-dashboard.vercel.app",repo:"https://github.com/ayushmahtele"},
+{n:"Def-Space Multi-Agent Dashboard",c:"AI",d:"FastAPI orchestrator running Vision, RAG, Weather, News, GIS and Predict agents concurrently, with SHAP-explained go/no-go predictions and PDF reports.",t:["FastAPI","React","TypeScript","ChromaDB"],live:"https://def-space-dashboard.vercel.app",repo:"https://github.com/ayushmahtele/Def-Space-Dashboard"},
 {n:"AI-Proctored Classroom",c:"Web",d:"Multi-college quiz platform with face and object detection proctoring, role-based access and a live Socket.IO monitor.",t:["Node.js","MongoDB","Socket.IO"],live:"https://classroom-bv1z.onrender.com",repo:"https://github.com/ayushmahtele/Classroom"},
-{n:"Traffic-Aware Pathfinding",c:"Algorithms",d:"Compare Dijkstra, A*, BFS and DFS on a city graph as animated traffic changes edge costs. C++17 solver behind a Node API.",t:["React","C++17","Node.js"],live:"",repo:"https://github.com/ayushmahtele"},
-{n:"Multiplayer Minesweeper",c:"Games",d:"Android real-time multiplayer with lobbies, a shared grid, penalty timer and an automatic leaderboard.",t:["Java","Firebase"],live:"",repo:"https://github.com/ayushmahtele"}
+{n:"Traffic-Aware Pathfinding",c:"Algorithms",d:"Compare Dijkstra, A*, BFS and DFS on a city graph as animated traffic changes edge costs. C++17 solver behind a Node API.",t:["React","C++17","Node.js"],live:"",repo:""},
+{n:"Multiplayer Minesweeper",c:"Games",d:"Android real-time multiplayer with lobbies, a shared grid, penalty timer and an automatic leaderboard.",t:["Java","Firebase"],live:"",repo:"https://github.com/ayushmahtele/MinesweeperApp"},
+{n:"JARVIS",c:"AI",d:"Personal project — open the repository to see the code and README.",t:["GitHub"],live:"",repo:"https://github.com/ayushmahtele/JARVIS"}
 ];
 var S={"Languages":["JavaScript","Python","C/C++","Java","SQL"],"Frontend":["React","Tailwind","Framer Motion","Three.js"],"Backend":["Node.js","Express","FastAPI","REST"],"Databases":["Firebase","PostgreSQL","MongoDB","MySQL"],"AI / GenAI":["RAG","Claude API","OpenAI","LangChain","LangGraph","PyTorch","scikit-learn"],"Tools":["Git","Linux","Vercel","Render","Figma"]};
 var g=document.getElementById("g"),f=document.getElementById("f");
 function render(cat){g.innerHTML="";P.filter(function(p){return cat=="All"||p.c==cat}).forEach(function(p){
 var e=document.createElement("div");e.className="card";
-e.innerHTML="<h3>"+p.n+(p.live?'<span class="live">● LIVE</span>':"")+"</h3><p>"+p.d+'</p><div class="tags">'+p.t.map(function(x){return"<span>"+x+"</span>"}).join("")+'</div><div class="row">'+(p.live?'<a class="btn p" href="'+p.live+'" target="_blank" rel="noopener">Live demo ↗</a>':"")+'<a class="btn" href="'+p.repo+'" target="_blank" rel="noopener">Code</a></div>';
+e.innerHTML="<h3>"+p.n+(p.live?'<span class="live">● LIVE</span>':"")+"</h3><p>"+p.d+'</p><div class="tags">'+p.t.map(function(x){return"<span>"+x+"</span>"}).join("")+'</div><div class="row">'+(p.live?'<a class="btn p" href="'+p.live+'" target="_blank" rel="noopener">Live demo ↗</a>':"")+''+(p.repo?'<a class="btn" href="'+p.repo+'" target="_blank" rel="noopener">Code</a>':"")+'</div>';
 e.onmousemove=function(ev){var r=e.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;e.style.transform="perspective(800px) rotateY("+x*8+"deg) rotateX("+-y*8+"deg)"};
 e.onmouseleave=function(){e.style.transform=""};g.appendChild(e)})}
-["All","AI","Web","Games","Algorithms"].forEach(function(c,i){var b=document.createElement("button");b.textContent=c;if(!i)b.className="on";b.onclick=function(){[].forEach.call(f.children,function(x){x.className=""});b.className="on";render(c)};f.appendChild(b)});
+["All","AI","Web","Networking","Games","Algorithms"].forEach(function(c,i){var b=document.createElement("button");b.textContent=c;if(!i)b.className="on";b.onclick=function(){[].forEach.call(f.children,function(x){x.className=""});b.className="on";render(c)};f.appendChild(b)});
 render("All");
 document.getElementById("sk").innerHTML=Object.keys(S).map(function(k){return'<div class="sk rv"><h4>'+k+"</h4><div>"+S[k].map(function(x){return"<span>"+x+"</span>"}).join("")+"</div></div>"}).join("");
+// auto-list other GitHub repos (works on the deployed site)
+fetch("https://api.github.com/users/ayushmahtele/repos?per_page=100&sort=pushed").then(function(r){return r.json()}).then(function(a){
+var shown=P.map(function(p){return(p.repo||"").toLowerCase()});
+var list=a.filter(function(r){return !r.fork&&r.name.toLowerCase()!="portfolio"&&shown.indexOf(r.html_url.toLowerCase())<0});
+if(!list.length)return;
+list.forEach(function(r){var h=r.homepage?(/^https?:/.test(r.homepage)?r.homepage:"https://"+r.homepage):"";var e=document.createElement("div");e.className="card";
+e.innerHTML="<h3>"+r.name+(h?'<span class="live">● LIVE</span>':"")+"</h3><p>"+(r.description||"Open the repository to see the code and README.")+'</p><div class="tags">'+(r.language?"<span>"+r.language+"</span>":"")+'</div><div class="row">'+(h?'<a class="btn p" href="'+h+'" target="_blank" rel="noopener">Live demo ↗</a>':"")+'<a class="btn" href="'+r.html_url+'" target="_blank" rel="noopener">Code</a></div>';
+document.getElementById("mg").appendChild(e)});
+document.getElementById("more").style.display="block"}).catch(function(){});
 // typing
 var W=["Full-Stack Developer","AI / RAG Engineer","Problem Solver"],wi=0,ci=0,del=false,t=document.getElementById("t");
 (function tick(){var w=W[wi];t.textContent=w.slice(0,ci);if(!del&&ci==w.length){del=true;return setTimeout(tick,1200)}if(del&&ci==0){del=false;wi=(wi+1)%W.length}ci+=del?-1:1;setTimeout(tick,del?40:80)})();
